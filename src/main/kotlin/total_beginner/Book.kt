@@ -5,7 +5,7 @@ import arrow.core.Option
 import arrow.core.Some
 import total_beginner.Borrower.Companion.getName
 
-data class Book(val title: String, val author: String, val borrower: Option<Borrower> = None) {
+data class Book(val title: String, val author: String, val maybeBorrower: Option<Borrower> = None) {
 
     companion object {
 
@@ -15,9 +15,9 @@ data class Book(val title: String, val author: String, val borrower: Option<Borr
 
         fun setAuthor(a: String, bk: Book): Book = bk.copy(author = a)
 
-        fun getBorrower(bk: Book): Option<Borrower> = bk.borrower
+        fun getBorrower(bk: Book): Option<Borrower> = bk.maybeBorrower
 
-        fun setBorrower(br: Borrower, bk: Book): Book = bk.copy(borrower = Some(br))
+        fun setBorrower(mbr: Option<Borrower>, bk: Book): Book = bk.copy(maybeBorrower = mbr)
 
         private fun availableString(bk: Book): String {
             return when (val br = getBorrower(bk)) {

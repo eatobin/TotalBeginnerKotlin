@@ -25,7 +25,7 @@ class BookTest : StringSpec({
     }
 
     "setAuthor should set the Book author" {
-        setAuthor("Author11", bk1).shouldBe(Book(title = "Title1", author = "Author11", borrower = Some(br1)))
+        setAuthor("Author11", bk1).shouldBe(Book(title = "Title1", author = "Author11", maybeBorrower = Some(br1)))
     }
 
     "getBorrower-someone should get the Book borrower" {
@@ -38,8 +38,14 @@ class BookTest : StringSpec({
 
     "setBorrower-someone should set the Book borrower" {
         val nbr = Book(title = "Title2", author = "Author2",
-                borrower = Some(Borrower(name = "BorrowerNew", maxBooks = 111)))
-        setBorrower(Borrower(name = "BorrowerNew", maxBooks = 111), bk2).shouldBe(nbr)
+                maybeBorrower = Some(Borrower(name = "BorrowerNew", maxBooks = 111)))
+        setBorrower(Some(Borrower(name = "BorrowerNew", maxBooks = 111)), bk2).shouldBe(nbr)
+    }
+
+    "setBorrower-None should set the Book borrower - None" {
+        val nbr = Book(title = "Title2", author = "Author2",
+                maybeBorrower = None)
+        setBorrower(None, bk2).shouldBe(nbr)
     }
 
 })
