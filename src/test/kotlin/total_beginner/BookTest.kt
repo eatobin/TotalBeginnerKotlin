@@ -1,11 +1,14 @@
 package total_beginner
 
+import arrow.core.None
 import arrow.core.Some
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import total_beginner.Book.Companion.getAuthor
+import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
 import total_beginner.Book.Companion.setAuthor
+import total_beginner.Book.Companion.setBorrower
 
 private val br1 = Borrower("Borrower1", 1)
 private val bk1 = Book("Title1", "Author1", Some(br1))
@@ -25,19 +28,19 @@ class BookTest : StringSpec({
         setAuthor("Author11", bk1).shouldBe(Book(title = "Title1", author = "Author11", borrower = Some(br1)))
     }
 
-//    "getBorrower-someone should get the Book borrower" {
-//        getBorrower(bk1).shouldBe(br1)
-//    }
-//
-//    "getBorrower-null should get the Book borrower - null" {
-//        getBorrower(bk2).shouldBe(null)
-//    }
-//
-//    "setBorrower-someone should set the Book borrower" {
-//        val nbr = Book(title = "Title2", author = "Author2",
-//                borrower = Some(Borrower(name = "BorrowerNew", maxBooks = 111)))
-//        setBorrower(Borrower(name = "BorrowerNew", maxBooks = 111), bk2).shouldBe(nbr)
-//    }
+    "getBorrower-someone should get the Book borrower" {
+        getBorrower(bk1).shouldBe(Some(Borrower(name = "Borrower1", maxBooks = 1)))
+    }
+
+    "getBorrower-None should get the Book borrower - None" {
+        getBorrower(bk2).shouldBe(None)
+    }
+
+    "setBorrower-someone should set the Book borrower" {
+        val nbr = Book(title = "Title2", author = "Author2",
+                borrower = Some(Borrower(name = "BorrowerNew", maxBooks = 111)))
+        setBorrower(Borrower(name = "BorrowerNew", maxBooks = 111), bk2).shouldBe(nbr)
+    }
 
 })
 
