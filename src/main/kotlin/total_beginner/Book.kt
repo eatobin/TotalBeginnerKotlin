@@ -1,8 +1,11 @@
 package total_beginner
 
+import arrow.core.None
+import arrow.core.Option
+import arrow.core.Some
 import total_beginner.Borrower.Companion.getName
 
-data class Book(val title: String, val author: String, val borrower: Borrower? = null) {
+data class Book(val title: String, val author: String, val borrower: Option<Borrower> = None) {
 
     companion object {
 
@@ -12,16 +15,14 @@ data class Book(val title: String, val author: String, val borrower: Borrower? =
 
         fun setAuthor(a: String, bk: Book): Book = bk.copy(author = a)
 
-        fun getBorrower(bk: Book): Borrower? = bk.borrower
+        fun getBorrower(bk: Book): Option<Borrower> = bk.borrower
 
-        fun setBorrower(br: Borrower?, bk: Book): Book = bk.copy(borrower = br)
+        fun setBorrower(br: Borrower, bk: Book): Book = bk.copy(borrower = Some(br))
 
         private fun availableString(bk: Book): String {
-            val br = getBorrower(bk)
-            return if (br == null) {
-                "Available"
-            } else {
-                "Checked out to " + getName(br)
+            return when (val br = getBorrower(bk)) {
+                is Some -> "Checked out to " + getName(br.t)
+                is None -> "Available"
             }
         }
 
