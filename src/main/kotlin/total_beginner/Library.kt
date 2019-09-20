@@ -9,23 +9,23 @@ package total_beginner
 //import total_beginner.Borrower.Companion.getMaxBooks
 //import total_beginner.Borrower.Companion.getName
 //
-//object Library {
-//
-//    fun <A> addItem(x: A, xs: List<A>): List<A> {
-//        return if (xs.contains(x))
-//            xs
-//        else
-//            xs.plusElement(x)
-//    }
-//
-//    fun removeBook(bk: Book, bks: List<Book>): List<Book> =
-//            bks.filter { it != bk }
-//
-//    fun <A> findItem(tgt: String, coll: List<A>, f: (A) -> String): A? {
-//        val result: List<A> = coll.filter { f(it) == tgt }
-//        return result.firstOrNull()
-//    }
-//
+object Library {
+
+    fun <A> addItem(x: A, xs: List<A>): List<A> {
+        return if (xs.contains(x))
+            xs
+        else
+            xs.plusElement(x)
+    }
+
+    fun removeBook(bk: Book, bks: List<Book>): List<Book> =
+            bks.filter { it != bk }
+
+    fun <A> findItem(tgt: String, coll: List<A>, f: (A) -> String): A? {
+        val result: List<A> = coll.filter { f(it) == tgt }
+        return result.firstOrNull()
+    }
+
 //    fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
 //            bks.filter { getBorrower(it) == br }
 //
@@ -108,4 +108,4 @@ package total_beginner
 //        return Klaxon().toJsonString(bks)
 //    }
 //
-//}
+}
