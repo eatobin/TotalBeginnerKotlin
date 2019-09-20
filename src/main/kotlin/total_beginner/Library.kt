@@ -1,5 +1,7 @@
 package total_beginner
 
+typealias Books = List<Book>
+
 //import com.beust.klaxon.Klaxon
 //import total_beginner.Book.Companion.bookToString
 //import total_beginner.Book.Companion.getBorrower
@@ -18,7 +20,7 @@ object Library {
             xs.plusElement(x)
     }
 
-    fun removeBook(bk: Book, bks: List<Book>): List<Book> =
+    fun removeBook(bk: Book, bks: Books): Books =
             bks.filter { it != bk }
 
     fun <A> findItem(tgt: String, coll: List<A>, f: (A) -> String): A? {
