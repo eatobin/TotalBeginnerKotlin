@@ -4,6 +4,7 @@ import arrow.core.None
 import arrow.core.Some
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
+import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getAuthor
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
@@ -48,21 +49,11 @@ class BookTest : StringSpec({
         setBorrower(None, bk2).shouldBe(nbr)
     }
 
+    "bookToString should return the Book - checked out" {
+        bookToString(bk1).shouldBe("Title1 by Author1; Checked out to Borrower1")
+    }
+
+    "bookToString should return the Book - not checked out" {
+        bookToString(bk2).shouldBe("Title2 by Author2; Available")
+    }
 })
-
-
-//    fun testSetBorrowerNull() {
-//        val nbr = Book(title = "Title1", author = "Author1",
-//                borrower = null)
-//        assertEquals(nbr, setBorrower(null, bk1))
-//    }
-//
-//    fun testBookToStringSomeone() {
-//        assertEquals("Title1 by Author1; Checked out to Borrower1", bookToString(bk1))
-//    }
-//
-//    fun testBookToStringNull() {
-//        assertEquals("Title2 by Author2; Available", bookToString(bk2))
-//    }
-//
-//}
