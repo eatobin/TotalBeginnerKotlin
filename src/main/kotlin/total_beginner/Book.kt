@@ -20,8 +20,8 @@ data class Book(val title: Title, val author: Author, val maybeBorrower: Option<
         fun setBorrower(mbr: Option<Borrower>, bk: Book): Book = bk.copy(maybeBorrower = mbr)
 
         private fun availableString(bk: Book): String {
-            return when (val br = getBorrower(bk)) {
-                is Some -> "Checked out to " + getName(br.t)
+            return when (val mbr = getBorrower(bk)) {
+                is Some -> "Checked out to " + getName(mbr.t)
                 is None -> "Available"
             }
         }
