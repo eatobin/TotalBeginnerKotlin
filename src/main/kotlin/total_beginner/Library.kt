@@ -1,13 +1,13 @@
 package total_beginner
 
 //import com.beust.klaxon.Klaxon
-//import total_beginner.Book.Companion.bookToString
-//import total_beginner.Book.Companion.getBorrower
-//import total_beginner.Book.Companion.getTitle
-//import total_beginner.Book.Companion.setBorrower
-//import total_beginner.Borrower.Companion.borrowerToString
-//import total_beginner.Borrower.Companion.getMaxBooks
-//import total_beginner.Borrower.Companion.getName
+//import TotalBeginnerKotlin.Book.Companion.bookToString
+//import TotalBeginnerKotlin.Book.Companion.getBorrower
+//import TotalBeginnerKotlin.Book.Companion.getTitle
+//import TotalBeginnerKotlin.Book.Companion.setBorrower
+//import TotalBeginnerKotlin.Borrower.Companion.borrowerToString
+//import TotalBeginnerKotlin.Borrower.Companion.getMaxBooks
+//import TotalBeginnerKotlin.Borrower.Companion.getName
 //
 object Library {
 

@@ -1,12 +1,12 @@
 package total_beginner
 
-//import total_beginner.Library.booksToJsonString
-//import total_beginner.Library.borrowersToJsonString
-//import total_beginner.Library.checkIn
-//import total_beginner.Library.checkOut
-//import total_beginner.Library.getBooksForBorrower
-//import total_beginner.Library.jsonStringToBooks
-//import total_beginner.Library.jsonStringToBorrowers
+//import TotalBeginnerKotlin.Library.booksToJsonString
+//import TotalBeginnerKotlin.Library.borrowersToJsonString
+//import TotalBeginnerKotlin.Library.checkIn
+//import TotalBeginnerKotlin.Library.checkOut
+//import TotalBeginnerKotlin.Library.getBooksForBorrower
+//import TotalBeginnerKotlin.Library.jsonStringToBooks
+//import TotalBeginnerKotlin.Library.jsonStringToBorrowers
 import arrow.core.None
 import arrow.core.Some
 import io.kotlintest.matchers.types.shouldBeNull
@@ -16,7 +16,7 @@ import total_beginner.Library.addItem
 import total_beginner.Library.findItem
 import total_beginner.Library.removeBook
 
-//import total_beginner.Library.statusToString
+//import TotalBeginnerKotlin.Library.statusToString
 
 
 private val br1 = Borrower("Borrower1", 1)

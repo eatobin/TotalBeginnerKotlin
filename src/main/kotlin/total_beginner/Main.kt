@@ -1,12 +1,12 @@
 package total_beginner
 
-//import total_beginner.Library.addItem
-//import total_beginner.Library.borrowersToJsonString
-//import total_beginner.Library.checkIn
-//import total_beginner.Library.checkOut
-//import total_beginner.Library.jsonStringToBooks
-//import total_beginner.Library.jsonStringToBorrowers
-//import total_beginner.Library.statusToString
+//import TotalBeginnerKotlin.Library.addItem
+//import TotalBeginnerKotlin.Library.borrowersToJsonString
+//import TotalBeginnerKotlin.Library.checkIn
+//import TotalBeginnerKotlin.Library.checkOut
+//import TotalBeginnerKotlin.Library.jsonStringToBooks
+//import TotalBeginnerKotlin.Library.jsonStringToBorrowers
+//import TotalBeginnerKotlin.Library.statusToString
 //import java.io.BufferedReader
 //import java.io.File
 //
