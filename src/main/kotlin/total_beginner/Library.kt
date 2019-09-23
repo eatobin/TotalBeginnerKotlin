@@ -4,9 +4,11 @@ package total_beginner
 
 import arrow.core.None
 import arrow.core.Some
+import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
 import total_beginner.Book.Companion.setBorrower
+import total_beginner.Borrower.Companion.borrowerToString
 import total_beginner.Borrower.Companion.getMaxBooks
 import total_beginner.Borrower.Companion.getName
 
@@ -52,7 +54,7 @@ object Library {
         } else bks
     }
 
-    fun checkIn(t: String, bks: List<Book>): List<Book> {
+    fun checkIn(t: String, bks: Books): Books {
         val mbk: Book? = findItem(t, bks) { getTitle(it) }
         return if (mbk != null && bookOut(mbk)) {
             val newBook = setBorrower(None, mbk)
@@ -61,28 +63,28 @@ object Library {
         } else bks
     }
 
-//    private fun libraryToString(bks: List<Book>, brs: List<Borrower>): String {
-//        return "Test Library: " +
-//                bks.count() +
-//                " books; " +
-//                brs.count() +
-//                " borrowers."
-//    }
-//
-//    fun statusToString(bks: List<Book>, brs: List<Borrower>): String {
-//        return "\n" +
-//                "--- Status Report of Test Library ---\n" +
-//                "\n" +
-//                libraryToString(bks, brs) + "\n" +
-//                "\n" +
-//                bks.joinToString("\n") { bookToString(it) } + "\n" +
-//                "\n" +
-//                brs.joinToString("\n") { borrowerToString(it) } + "\n" +
-//                "\n" +
-//                "--- End of Status Report ---" +
-//                "\n"
-//    }
-//
+    private fun libraryToString(bks: Books, brs: Borrowers): String {
+        return "Test Library: " +
+                bks.count() +
+                " books; " +
+                brs.count() +
+                " borrowers."
+    }
+
+    fun statusToString(bks: List<Book>, brs: List<Borrower>): String {
+        return "\n" +
+                "--- Status Report of Test Library ---\n" +
+                "\n" +
+                libraryToString(bks, brs) + "\n" +
+                "\n" +
+                bks.joinToString("\n") { bookToString(it) } + "\n" +
+                "\n" +
+                brs.joinToString("\n") { borrowerToString(it) } + "\n" +
+                "\n" +
+                "--- End of Status Report ---" +
+                "\n"
+    }
+
 //    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
 //        return try {
 //            val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
