@@ -1,12 +1,5 @@
 package total_beginner
 
-//import TotalBeginnerKotlin.Library.booksToJsonString
-//import TotalBeginnerKotlin.Library.borrowersToJsonString
-//import TotalBeginnerKotlin.Library.checkIn
-//import TotalBeginnerKotlin.Library.checkOut
-//import TotalBeginnerKotlin.Library.getBooksForBorrower
-//import TotalBeginnerKotlin.Library.jsonStringToBooks
-//import TotalBeginnerKotlin.Library.jsonStringToBorrowers
 import arrow.core.None
 import arrow.core.Some
 import io.kotlintest.matchers.types.shouldBeNull
@@ -14,10 +7,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import total_beginner.Library.addItem
 import total_beginner.Library.findItem
+import total_beginner.Library.getBooksForBorrower
 import total_beginner.Library.removeBook
-
-//import TotalBeginnerKotlin.Library.statusToString
-
 
 private val br1 = Borrower("Borrower1", 1)
 private val br2 = Borrower("Borrower2", 2)
@@ -34,8 +25,8 @@ private val bk4 = Book("Title4", "Author4", Some(br3))
 private val bks1 = listOf(bk1, bk2)
 private val bks2 = listOf(bk1, bk2, bk3)
 private val bks3 = listOf(bk1, bk2, bk3, bk4)
-private val bks4 = listOf(bk1, bk3, bk4, (Book(title = "Title2", author = "Author2", maybeBorrower = Some(br2))))
-private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", maybeBorrower = None))
+//private val bks4 = listOf(bk1, bk3, bk4, (Book(title = "Title2", author = "Author2", maybeBorrower = Some(br2))))
+//private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", maybeBorrower = None))
 
 
 //private const val jsonStringBorrowers = "[{\"name\":\"Borrower1\",\"maxBooks\":1},{\"name\":\"Borrower2\",\"maxBooks\":2}]"
@@ -71,12 +62,12 @@ class LibraryTest : StringSpec({
         findItem("Borrower11", brs2) { Borrower.getName(it) }.shouldBeNull()
     }
 
-//    "getBooksForBorrower should find the Books for a Borrower" {
-//        getBooksForBorrower(br2, bks1).shouldBe(listOf())
-//        getBooksForBorrower(br1, bks1).shouldBe(listOf(bk1))
-//        getBooksForBorrower(br3, bks3).shouldBe(listOf(bk3, bk4))
-//    }
-//
+    "getBooksForBorrower should find the Books for a Borrower" {
+        getBooksForBorrower(br2, bks1).shouldBe(listOf())
+        getBooksForBorrower(br1, bks1).shouldBe(listOf(bk1))
+        getBooksForBorrower(br3, bks3).shouldBe(listOf(bk3, bk4))
+    }
+
 //    "a Book should check out" {
 //        checkOut("Borrower2", "Title1", brs1, bks1).shouldBe(bks1)
 //        checkOut("Borrower2", "NoTitle", brs1, bks1).shouldBe(bks1)

@@ -1,14 +1,10 @@
 package total_beginner
 
 //import com.beust.klaxon.Klaxon
-//import TotalBeginnerKotlin.Book.Companion.bookToString
-//import TotalBeginnerKotlin.Book.Companion.getBorrower
-//import TotalBeginnerKotlin.Book.Companion.getTitle
-//import TotalBeginnerKotlin.Book.Companion.setBorrower
-//import TotalBeginnerKotlin.Borrower.Companion.borrowerToString
-//import TotalBeginnerKotlin.Borrower.Companion.getMaxBooks
-//import TotalBeginnerKotlin.Borrower.Companion.getName
-//
+
+import arrow.core.Some
+import total_beginner.Book.Companion.getBorrower
+
 object Library {
 
     fun <A> addItem(x: A, xs: List<A>): List<A> {
@@ -26,9 +22,9 @@ object Library {
         return result.firstOrNull()
     }
 
-//    fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
-//            bks.filter { getBorrower(it) == br }
-//
+    fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
+            bks.filter { getBorrower(it) == Some(br) }
+
 //    private fun numBooksOut(br: Borrower, bks: List<Book>): Int =
 //            getBooksForBorrower(br, bks).count()
 //
