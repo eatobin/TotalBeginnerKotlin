@@ -1,9 +1,8 @@
 package total_beginner
 
-//import com.beust.klaxon.Klaxon
-
 import arrow.core.None
 import arrow.core.Some
+import com.beust.klaxon.Klaxon
 import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
@@ -85,24 +84,24 @@ object Library {
                 "\n"
     }
 
-//    fun jsonStringToBorrowers(jsonString: String): List<Borrower> {
-//        return try {
-//            val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
-//            return mbrs ?: emptyList()
-//        } catch (e: Exception) {
-//            emptyList()
-//        }
-//    }
-//
-//    fun jsonStringToBooks(jsonString: String): List<Book> {
-//        return try {
-//            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
-//            return mbks ?: emptyList()
-//        } catch (e: Exception) {
-//            emptyList()
-//        }
-//    }
-//
+    fun jsonStringToBorrowers(jsonString: String): Borrowers {
+        return try {
+            val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
+            return mbrs ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
+    fun jsonStringToBooks(jsonString: String): List<Book> {
+        return try {
+            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
+            return mbks ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
+
 //    fun borrowersToJsonString(brs: List<Borrower>): String {
 //        return Klaxon().toJsonString(brs)
 //    }
