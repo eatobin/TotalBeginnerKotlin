@@ -4,6 +4,10 @@ package total_beginner
 
 import arrow.core.Some
 import total_beginner.Book.Companion.getBorrower
+import total_beginner.Book.Companion.getTitle
+import total_beginner.Book.Companion.setBorrower
+import total_beginner.Borrower.Companion.getMaxBooks
+import total_beginner.Borrower.Companion.getName
 
 object Library {
 
@@ -22,31 +26,31 @@ object Library {
         return result.firstOrNull()
     }
 
-    fun getBooksForBorrower(br: Borrower, bks: List<Book>): List<Book> =
+    fun getBooksForBorrower(br: Borrower, bks: Books): List<Book> =
             bks.filter { getBorrower(it) == Some(br) }
 
-//    private fun numBooksOut(br: Borrower, bks: List<Book>): Int =
-//            getBooksForBorrower(br, bks).count()
-//
-//    private fun notMaxedOut(br: Borrower, bks: List<Book>): Boolean =
-//            numBooksOut(br, bks) < getMaxBooks(br)
-//
-//    private fun bookNotOut(bk: Book): Boolean =
-//            getBorrower(bk) == null
-//
-//    private fun bookOut(bk: Book): Boolean =
-//            getBorrower(bk) != null
-//
-//    fun checkOut(n: String, t: String, brs: List<Borrower>, bks: List<Book>): List<Book> {
-//        val mbk: Book? = findItem(t, bks) { getTitle(it) }
-//        val mbr: Borrower? = findItem(n, brs) { getName(it) }
-//        return if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
-//            val newBook = setBorrower(mbr, mbk)
-//            val fewerBooks = removeBook(mbk, bks)
-//            addItem(newBook, fewerBooks)
-//        } else bks
-//    }
-//
+    private fun numBooksOut(br: Borrower, bks: Books): Int =
+            getBooksForBorrower(br, bks).count()
+
+    private fun notMaxedOut(br: Borrower, bks: Books): Boolean =
+            numBooksOut(br, bks) < getMaxBooks(br)
+
+    private fun bookNotOut(bk: Book): Boolean =
+            getBorrower(bk).isEmpty()
+
+    private fun bookOut(bk: Book): Boolean =
+            getBorrower(bk).isDefined()
+
+    fun checkOut(n: String, t: String, brs: Borrowers, bks: Books): Books {
+        val mbk: Book? = findItem(t, bks) { getTitle(it) }
+        val mbr: Borrower? = findItem(n, brs) { getName(it) }
+        return if (mbk != null && mbr != null && notMaxedOut(mbr, bks) && bookNotOut(mbk)) {
+            val newBook = setBorrower(Some(mbr), mbk)
+            val fewerBooks = removeBook(mbk, bks)
+            addItem(newBook, fewerBooks)
+        } else bks
+    }
+
 //    fun checkIn(t: String, bks: List<Book>): List<Book> {
 //        val mbk: Book? = findItem(t, bks) { getTitle(it) }
 //        return if (mbk != null && bookOut(mbk)) {
