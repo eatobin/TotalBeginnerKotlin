@@ -2,6 +2,7 @@ package total_beginner
 
 //import com.beust.klaxon.Klaxon
 
+import arrow.core.None
 import arrow.core.Some
 import total_beginner.Book.Companion.getBorrower
 import total_beginner.Book.Companion.getTitle
@@ -51,15 +52,15 @@ object Library {
         } else bks
     }
 
-//    fun checkIn(t: String, bks: List<Book>): List<Book> {
-//        val mbk: Book? = findItem(t, bks) { getTitle(it) }
-//        return if (mbk != null && bookOut(mbk)) {
-//            val newBook = setBorrower(null, mbk)
-//            val fewerBooks = removeBook(mbk, bks)
-//            addItem(newBook, fewerBooks)
-//        } else bks
-//    }
-//
+    fun checkIn(t: String, bks: List<Book>): List<Book> {
+        val mbk: Book? = findItem(t, bks) { getTitle(it) }
+        return if (mbk != null && bookOut(mbk)) {
+            val newBook = setBorrower(None, mbk)
+            val fewerBooks = removeBook(mbk, bks)
+            addItem(newBook, fewerBooks)
+        } else bks
+    }
+
 //    private fun libraryToString(bks: List<Book>, brs: List<Borrower>): String {
 //        return "Test Library: " +
 //                bks.count() +

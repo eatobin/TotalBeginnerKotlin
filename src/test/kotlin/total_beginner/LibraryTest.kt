@@ -6,6 +6,7 @@ import io.kotlintest.matchers.types.shouldBeNull
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import total_beginner.Library.addItem
+import total_beginner.Library.checkOut
 import total_beginner.Library.findItem
 import total_beginner.Library.getBooksForBorrower
 import total_beginner.Library.removeBook
@@ -25,7 +26,7 @@ private val bk4 = Book("Title4", "Author4", Some(br3))
 private val bks1 = listOf(bk1, bk2)
 private val bks2 = listOf(bk1, bk2, bk3)
 private val bks3 = listOf(bk1, bk2, bk3, bk4)
-//private val bks4 = listOf(bk1, bk3, bk4, (Book(title = "Title2", author = "Author2", maybeBorrower = Some(br2))))
+private val bks4 = listOf(bk1, bk3, bk4, (Book(title = "Title2", author = "Author2", maybeBorrower = Some(br2))))
 //private val bks5 = listOf(bk2, Book(title = "Title1", author = "Author1", maybeBorrower = None))
 
 
@@ -68,14 +69,14 @@ class LibraryTest : StringSpec({
         getBooksForBorrower(br3, bks3).shouldBe(listOf(bk3, bk4))
     }
 
-//    "a Book should check out" {
-//        checkOut("Borrower2", "Title1", brs1, bks1).shouldBe(bks1)
-//        checkOut("Borrower2", "NoTitle", brs1, bks1).shouldBe(bks1)
-//        checkOut("NoName", "Title1", brs1, bks1).shouldBe(bks1)
-//        checkOut("Borrower1", "Title2", brs1, bks1).shouldBe(bks1)
-//        checkOut("Borrower2", "Title2", brs2, bks3).shouldBe(bks4)
-//    }
-//
+    "a Book should check out" {
+        checkOut("Borrower2", "Title1", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower2", "NoTitle", brs1, bks1).shouldBe(bks1)
+        checkOut("NoName", "Title1", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower1", "Title2", brs1, bks1).shouldBe(bks1)
+        checkOut("Borrower2", "Title2", brs2, bks3).shouldBe(bks4)
+    }
+
 //    "a Book should check in" {
 //        checkIn("Title1", bks1).shouldBe(bks5)
 //        checkIn("Title2", bks1).shouldBe(bks1)
