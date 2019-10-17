@@ -13,5 +13,5 @@ typealias Borrowers = List<Borrower>
 typealias Books = List<Book>
 
 // typealias FilePath = String
-// typealias JsonString = String
+ typealias JsonString = String
 // typealias ErrorString = String

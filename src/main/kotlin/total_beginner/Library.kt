@@ -2,6 +2,7 @@ package total_beginner
 
 import arrow.core.None
 import arrow.core.Some
+import com.beust.klaxon.JsonReader
 import com.beust.klaxon.Klaxon
 import total_beginner.Book.Companion.bookToString
 import total_beginner.Book.Companion.getBorrower
@@ -10,6 +11,7 @@ import total_beginner.Book.Companion.setBorrower
 import total_beginner.Borrower.Companion.borrowerToString
 import total_beginner.Borrower.Companion.getMaxBooks
 import total_beginner.Borrower.Companion.getName
+import java.io.StringReader
 
 object Library {
 
@@ -84,21 +86,41 @@ object Library {
                 "\n"
     }
 
-    fun jsonStringToBorrowers(jsonString: String): Borrowers {
-        return try {
-            val mbrs: List<Borrower>? = Klaxon().parseArray(jsonString)
-            return mbrs ?: emptyList()
-        } catch (e: Exception) {
-            emptyList()
+    fun jsonStringToBorrowers(jsonString: JsonString): Borrowers {
+        val klaxon = Klaxon()
+        JsonReader(StringReader(jsonString)).use { reader ->
+            val result = arrayListOf<Borrower>()
+            try {
+                reader.beginArray {
+                    while (reader.hasNext()) {
+                        val borrower = klaxon.parse<Borrower>(reader)
+                        if (borrower != null)
+                            result.add(borrower)
+                    }
+                }
+            } catch (_: Exception) {
+                println("\n***The JSON string:\n " + jsonString + "could not be parsed***\n")
+            }
+            return result
         }
     }
 
-    fun jsonStringToBooks(jsonString: String): List<Book> {
-        return try {
-            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
-            return mbks ?: emptyList()
-        } catch (e: Exception) {
-            emptyList()
+    fun jsonStringToBooks(jsonString: JsonString): Books {
+        val klaxon = Klaxon()
+        JsonReader(StringReader(jsonString)).use { reader ->
+            val result = arrayListOf<Book>()
+            try {
+                reader.beginArray {
+                    while (reader.hasNext()) {
+                        val book = klaxon.parse<Book>(reader)
+                        if (book != null)
+                            result.add(book)
+                    }
+                }
+            } catch (_: Exception) {
+                println("\n***The JSON string:\n " + jsonString + "could not be parsed***\n")
+            }
+            return result
         }
     }
 
