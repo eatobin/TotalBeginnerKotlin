@@ -93,21 +93,21 @@ object Library {
         }
     }
 
-//    fun jsonStringToBooks(jsonString: String): List<Book> {
-//        return try {
-//            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
-//            return mbks ?: emptyList()
-//        } catch (e: Exception) {
-//            emptyList()
-//        }
-//    }
+    fun jsonStringToBooks(jsonString: String): List<Book> {
+        return try {
+            val mbks: List<Book>? = Klaxon().parseArray(jsonString)
+            return mbks ?: emptyList()
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
 
-//    fun borrowersToJsonString(brs: List<Borrower>): String {
-//        return Klaxon().toJsonString(brs)
-//    }
-//
-//    fun booksToJsonString(bks: List<Book>): String {
-//        return Klaxon().toJsonString(bks)
-//    }
-//
+    fun borrowersToJsonString(brs: List<Borrower>): String {
+        return Klaxon().toJsonString(brs)
+    }
+
+    fun booksToJsonString(bks: List<Book>): String {
+        return Klaxon().toJsonString(bks)
+    }
+
 }
